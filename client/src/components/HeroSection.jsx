@@ -38,8 +38,8 @@ const HeroSection = () => {
                         className="w-full lg:w-1/2 flex justify-center"
                     >
                         <div className="relative">
-                            <div className="absolute -inset-4 bg-emerald-200/50 rounded-3xl transform -rotate-3"></div>
-                            <div className="absolute -inset-4 bg-emerald-200/50 rounded-3xl transform rotate-3"></div>
+                            <div className="absolute -inset-4 bg-emerald-100/50 rounded-3xl transform -rotate-4"></div>
+                            <div className="absolute -inset-4 bg-emerald-100/50 rounded-3xl transform rotate-4"></div>
                             <img
                                 src={img3}
                                 alt="Crop Health Analysis"
