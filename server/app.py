@@ -30,7 +30,7 @@ def info():
 
 @app.route("/predictions",methods=['GET','POST'])
 def prediction():
-            try:
+            # try:
                 file = request.files['file_from_react']
                 if file.filename!='':
                     fn = secure_filename(file.filename)
@@ -50,8 +50,8 @@ def prediction():
                         return jsonify({"Crop":data[0].capitalize(),"Disease":data[1].capitalize(),"cause":text[0],"sym":text[1],"cure":text[2],"isHealthy":False})
                     else:
                         return jsonify({"Crop":data[0].capitalize(),"Disease":"N/A","cause":"N/A","sym":"N/A","cure":"N/A","isHealthy":True})
-            except Exception as e:
-                  return jsonify({"Crop":"error","Disease":"error"})
+            # except Exception as e:
+                #   return jsonify({"Crop":"error","Disease":"error"})
              
 
 load_dotenv()
