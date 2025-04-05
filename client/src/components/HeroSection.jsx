@@ -65,10 +65,9 @@ const HeroSection = () => {
 
                             <motion.div variants={variantItem}>
                                 <p className="text-lg md:text-xl mb-8 text-gray-600 max-w-2xl mx-auto lg:mx-0">
-                                    Leverage AI-powered diagnostics to detect plant diseases early.
-                                    Our system analyzes leaf patterns and environmental factors to
-                                    provide actionable insights, helping you protect your crops
-                                    and maximize yields.
+                                    Empowering Farmers with Smart Plant Disease Detection.
+                                    Get instant diagnosis, local language support, and voice assistance.
+                                    Simplifying farming with technology, one click at a time.
                                 </p>
                             </motion.div>
 
