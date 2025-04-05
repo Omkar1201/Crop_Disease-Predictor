@@ -230,7 +230,7 @@ const PlantReport = () => {
             <div className="flex flex-col justify-between lg:flex-row gap-8 mb-8 relative z-10">
                 {/* Image Card */}
                 <div className="w-full lg:max-w-md xl:max-w-lg transform perspective-1000">
-                    <div className="relative overflow-hidden min-h-[20rem] rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 group">
+                    <div className="relative overflow-hidden min-w-[15rem] min-h-[15rem] max-h-[20rem] max-w-[20rem] rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-500 group">
                         {image && (
                             <>
                                 <img

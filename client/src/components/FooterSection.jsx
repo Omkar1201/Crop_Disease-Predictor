@@ -114,7 +114,7 @@ const FooterSection = () => {
                 {/* Divider */}
                 <div className="border-t border-gray-700 relative">
                     <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                        <FaLeaf className="text-teal-400 text-xl bg-[#0f1d1f] px-2" />
+                        <FaLeaf className="text-teal-400 text-2xl bg-[#0f1d1f] px-2" />
                     </div>
                 </div>
 
