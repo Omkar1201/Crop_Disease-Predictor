@@ -3,6 +3,7 @@ import Home from './pages/Home'
 import SelectFile from './components/SelectFile'
 import Navbar from './components/Navbar'
 import About from './pages/About'
+import FooterSection from './components/FooterSection'
 function App() {
 
 	return (
@@ -13,6 +14,7 @@ function App() {
 				<Route path="/selectfile" element={<SelectFile />} />
 				<Route path="/about" element={<About />} />
 			</Routes>
+			<FooterSection/>
 		</div>
 	)
 }
