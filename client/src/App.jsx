@@ -6,7 +6,7 @@ import About from './pages/About'
 function App() {
 
 	return (
-		<div className='pt-[5rem] bg-gradient-to-b from-green-50 to-white'>
+		<div className='pt-[4rem] bg-gradient-to-b from-green-50 to-white'>
 			<Navbar />
 			<Routes>
 				<Route path="/" element={<Home />} />
