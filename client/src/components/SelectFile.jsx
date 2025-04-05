@@ -1,12 +1,10 @@
 import React, { useContext, useRef, useState } from 'react';
 import { AppContext } from '../context/AppContext';
 import { LuUpload } from "react-icons/lu";
-// import Navbar from './Navbar';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { SlCloudUpload } from "react-icons/sl";
 import { RxCross2 } from "react-icons/rx";
-// import "./stylee.css"
 import { useNavigate } from 'react-router';
 import { motion } from 'framer-motion';
 
@@ -80,7 +78,7 @@ export default function SelectFile() {
 
     return (
 
-        <div className='flex flex-col py-7 items-center bg-gradient-to-br'>
+        <div className='flex flex-col py-7 min-h-screen items-center bg-gradient-to-br'>
             <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}

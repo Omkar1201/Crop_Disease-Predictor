@@ -4,6 +4,7 @@ import SelectFile from './components/SelectFile'
 import Navbar from './components/Navbar'
 import About from './pages/About'
 import FooterSection from './components/FooterSection'
+import PlantReport from './components/PlantReport'
 function App() {
 
 	return (
@@ -13,6 +14,7 @@ function App() {
 				<Route path="/" element={<Home />} />
 				<Route path="/selectfile" element={<SelectFile />} />
 				<Route path="/about" element={<About />} />
+				<Route path="/plantreport" element={<PlantReport/>}/>
 			</Routes>
 			<FooterSection/>
 		</div>

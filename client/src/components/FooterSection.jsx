@@ -1,5 +1,4 @@
 import React from "react";
-// import "./stylee.css";
 import { NavLink } from "react-router-dom";
 import { FaLinkedin, FaInstagramSquare, FaTwitterSquare, FaFacebookSquare, FaArrowRight } from "react-icons/fa";
 
@@ -21,7 +20,7 @@ const FooterSection = () => {
         }
       };
     return (
-        <div className="w-full bg-gradient-to-br from-[#2a362e] to-[#1d2728] pt-12 mt-24">
+        <div className="w-full bg-gradient-to-br from-[#2a362e] to-[#1d2728] pt-12 ">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-12">
                     {/* Social Links */}

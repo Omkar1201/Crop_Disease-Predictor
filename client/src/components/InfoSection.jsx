@@ -66,15 +66,15 @@ const InfoSection = () => {
         },
         {
             icon: <TbLanguage />,
-            title: "Multilingual Interface",
-            text: "Supports 12+ regional languages with real-time translation and cultural context adaptation",
+            title: "Regional Language Support",
+            text: "To make the app user-friendly for farmers and local communities, we provide support for multiple regional languages. This helps users understand the information easily in their native language.",
             color: "from-amber-500 to-orange-500",
             pattern: "url(#language-pattern)"
         },
         {
             icon: <TbSpeakerphone />,
-            title: "Voice Assistant Integration",
-            text: "Natural language processing for voice commands and audio guidance in multiple dialects",
+            title: "Text-to-Speech Assistance",
+            text: "The app includes a text-to-speech feature that reads out disease names, symptoms, and treatment steps. This is helpful for users who prefer listening over reading or face reading challenges.",
             color: "from-indigo-500 to-purple-500",
             pattern: "url(#voice-pattern)"
         }
