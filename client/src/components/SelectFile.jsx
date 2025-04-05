@@ -51,8 +51,7 @@ export default function SelectFile() {
             setLoading(true);
             const fd = new FormData();
             fd.append("file_from_react", image)
-            const response = await axios.post(`${process.env.REACT_APP_BASE_URL}/predictions`, fd)
-            console.log(response);
+            const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/predictions`, fd)
 
             setPlantData({
                 diseaseName: response.data?.Disease || 'Unknown',
