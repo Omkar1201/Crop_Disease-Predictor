@@ -45,11 +45,11 @@ def prediction():
                     yhat = model.predict(np.expand_dims(resize/255, 0))
                     
                     data=getData(np.argmax(yhat))
-                    flag=1
                     if(data[1]!="Healthy"):
-                                text=generate(c=data[0],d=data[1])
-                                flag=0                     
-                    return jsonify({"Crop":data[0].capitalize(),"Disease":data[1].capitalize(),"flag":flag,"cause":text[0],"sym":text[1],"cure":text[2]})
+                        text=generate(c=data[0],d=data[1])
+                        return jsonify({"Crop":data[0].capitalize(),"Disease":data[1].capitalize(),"cause":text[0],"sym":text[1],"cure":text[2],"isHealthy":False})
+                    else:
+                        return jsonify({"Crop":data[0].capitalize(),"Disease":"N/A","cause":"N/A","sym":"N/A","cure":"N/A","isHealthy":True})
             except Exception as e:
                   return jsonify({"Crop":"error","Disease":"error"})
              
