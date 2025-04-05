@@ -60,7 +60,7 @@ const InfoSection = () => {
         {
             icon: <TbPlant2 />,
             title: "AI-Powered Plant Diagnosis",
-            text: "Instant disease detection using deep learning models trained on 500k+ plant images with 98% accuracy",
+            text: "Detect plant diseases instantly with 95% accuracy using our AI model. Supports 10+ plants for fast and reliable diagnosis. Just upload a photo and get instant results with treatment suggestions.",
             color: "from-emerald-500 to-teal-500",
             pattern: "url(#plant-pattern)"
         },

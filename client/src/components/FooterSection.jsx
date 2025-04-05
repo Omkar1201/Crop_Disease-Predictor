@@ -34,8 +34,7 @@ const FooterSection = () => {
                             </span>
                         </div>
                         <p className="text-gray-300 text-sm pr-8">
-                            Empowering growers with AI-driven plant health solutions. Early detection for healthier crops.
-                        </p>
+                            Detect diseases, recommend treatments, and boost crop yield – all in one platform.</p>
                     </div>
 
                     {/* Quick Links */}
@@ -76,11 +75,11 @@ const FooterSection = () => {
                         <div className="space-y-3">
                             <div className="flex items-center">
                                 <FaMapMarkerAlt className="text-emerald-600 mr-3" />
-                                <p className="text-gray-300">123 Green Valley Road</p>
+                                <p className="text-gray-300">123 Pimpri Road</p>
                             </div>
                             <div className="flex items-center">
                                 <FaPhoneAlt className="text-emerald-600 mr-3" />
-                                <p className="text-gray-300">+1 (12) 123-4567</p>
+                                <p className="text-gray-300">+91 123456789</p>
                             </div>
                             <div className="flex items-center">
                                 <FaEnvelope className="text-emerald-600 mr-3" />
@@ -92,7 +91,7 @@ const FooterSection = () => {
                     {/* Newsletter */}
                     <div className="space-y-4">
                         <h3 className=" bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-green-500 text-lg font-semibold">
-                            Grower's Digest
+                            Farmer's Journal
                         </h3>
                         <form className="flex flex-col space-y-3">
                             <input
