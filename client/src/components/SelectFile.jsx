@@ -157,7 +157,7 @@ export default function SelectFile() {
                                 onClick={handleButtonClick}
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                className='bg-gradient-to-r cursor-pointer from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center gap-2'
+                                className='bg-gradient-to-r cursor-pointer from-emerald-600 to-green-500 hover:from-emerald-600 hover:to-green-600 text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 hover:shadow-lg flex items-center gap-2'
                             >
                                 <LuUpload className='w-5 h-5' />
                                 Choose File

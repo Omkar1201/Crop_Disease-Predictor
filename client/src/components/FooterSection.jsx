@@ -1,120 +1,142 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { FaLinkedin, FaInstagramSquare, FaTwitterSquare, FaFacebookSquare, FaArrowRight } from "react-icons/fa";
+import { FaLinkedin, FaInstagramSquare, FaTwitterSquare, FaFacebookSquare, FaArrowRight, FaLeaf, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
+import { GiPlantWatering } from "react-icons/gi";
 
 const FooterSection = () => {
-    const containerVariants = {
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
-      };
-      
-      const itemVariants = {
-        hidden: { opacity: 0, x: -20 },
-        visible: { opacity: 1, x: 0 },
-      };
-      
-      const cardHover = {
-        hover: { 
-          y: -5,
-          transition: { type: "spring", stiffness: 300 }
-        }
-      };
     return (
-        <div className="w-full bg-gradient-to-br from-[#2a362e] to-[#1d2728] pt-12 ">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="w-full bg-gradient-to-br from-[#1a2e28] to-[#0f1d1f] pt-12 relative overflow-hidden">
+            {/* Decorative leaf pattern */}
+            <div className="absolute inset-0 opacity-10 z-0">
+                {[...Array(20)].map((_, i) => (
+                    <FaLeaf
+                        key={i}
+                        className="absolute text-white"
+                        style={{
+                            left: `${Math.random() * 100}%`,
+                            top: `${Math.random() * 100}%`,
+                            fontSize: `${Math.random() * 20 + 10}px`,
+                            transform: `rotate(${Math.random() * 360}deg)`,
+                        }}
+                    />
+                ))}
+            </div>
+
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8 pb-12">
-                    {/* Social Links */}
+                    {/* Brand Identity */}
                     <div className="space-y-4">
-                        <h3 className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-500 text-lg font-semibold">
-                            Connect With Us
-                        </h3>
-                        <div className="flex space-x-4">
-                            {[
-                                { icon: FaLinkedin, color: "#0A66C2" },
-                                { icon: FaInstagramSquare, color: "#E1306C" },
-                                { icon: FaTwitterSquare, color: "#1DA1F2" },
-                                { icon: FaFacebookSquare, color: "#1877F2" },
-                            ].map((SocialIcon, index) => (
-                                <SocialIcon.icon
-                                    key={index}
-                                    className="text-3xl cursor-pointer text-white opacity-80 hover:opacity-100 transition-opacity duration-300 hover:-translate-y-1 transform"
-                                    style={{ color: SocialIcon.color }}
-                                />
-                            ))}
+                        <div className="flex items-center space-x-3">
+                            <GiPlantWatering className="text-4xl text-emerald-400 animate-pulse" />
+                            <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-green-500">
+                                PlantGuard
+                            </span>
                         </div>
+                        <p className="text-gray-300 text-sm pr-8">
+                            Empowering growers with AI-driven plant health solutions. Early detection for healthier crops.
+                        </p>
                     </div>
 
                     {/* Quick Links */}
                     <div className="space-y-4">
-                        <h3 className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-500 text-lg font-semibold">
+                        <h3 className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-green-500 text-lg font-semibold">
                             Quick Links
                         </h3>
                         <div className="flex flex-col space-y-2">
                             <NavLink
-                                to="/About"
-                                className="text-gray-300 hover:text-white flex items-center group transition-all duration-300"
+                                to="/about"
+                                className="text-gray-300 hover:text-white flex items-center group transition-all duration-300 hover:pl-2"
                             >
-                                <FaArrowRight className="mr-2 text-teal-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                <FaArrowRight className="mr-2 text-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                                 About Us
                             </NavLink>
-                            <a href="#" className="text-gray-300 hover:text-white flex items-center group transition-all duration-300">
-                                <FaArrowRight className="mr-2 text-teal-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                                Terms & Conditions
-                            </a>
-                            <a href="#" className="text-gray-300 hover:text-white flex items-center group transition-all duration-300">
-                                <FaArrowRight className="mr-2 text-teal-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                            <NavLink
+                                // to="/disease-library"
+                                className="text-gray-300 hover:text-white flex items-center group transition-all duration-300 hover:pl-2"
+                            >
+                                <FaArrowRight className="mr-2 text-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                                Disease Library
+                            </NavLink>
+                            <NavLink
+                                // to="/privacy"
+                                className="text-gray-300 hover:text-white flex items-center group transition-all duration-300 hover:pl-2"
+                            >
+                                <FaArrowRight className="mr-2 text-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                                 Privacy Policy
-                            </a>
+                            </NavLink>
                         </div>
                     </div>
 
                     {/* Contact Info */}
                     <div className="space-y-4">
-                        <h3 className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-500 text-lg font-semibold">
+                        <h3 className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-green-500 text-lg font-semibold">
                             Contact Us
                         </h3>
-                        <div className="space-y-2">
-                            <p className="text-gray-300">123 Financial Street</p>
-                            <p className="text-gray-300">New York, NY 10001</p>
-                            <p className="text-gray-300">Tel: +1 (555) 123-4567</p>
-                            <p className="text-gray-300">Email: support@bankingplus.com</p>
+                        <div className="space-y-3">
+                            <div className="flex items-center">
+                                <FaMapMarkerAlt className="text-emerald-600 mr-3" />
+                                <p className="text-gray-300">123 Green Valley Road</p>
+                            </div>
+                            <div className="flex items-center">
+                                <FaPhoneAlt className="text-emerald-600 mr-3" />
+                                <p className="text-gray-300">+1 (12) 123-4567</p>
+                            </div>
+                            <div className="flex items-center">
+                                <FaEnvelope className="text-emerald-600 mr-3" />
+                                <p className="text-gray-300">support@plantguard.ai</p>
+                            </div>
                         </div>
                     </div>
 
                     {/* Newsletter */}
                     <div className="space-y-4">
-                        <h3 className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-emerald-500 text-lg font-semibold">
-                            Stay Updated
+                        <h3 className=" bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-green-500 text-lg font-semibold">
+                            Grower's Digest
                         </h3>
                         <form className="flex flex-col space-y-3">
                             <input
                                 type="email"
                                 placeholder="Enter your email"
-                                className="bg-gray-800 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-teal-400"
+                                className="bg-gray-800 rounded-full px-6 py-3 text-white focus:outline-none focus:ring-2 focus:ring-teal-400 border border-gray-600 hover:border-teal-400 transition-all"
                             />
                             <button
                                 type="submit"
-                                className="bg-gradient-to-r from-teal-500 to-emerald-600 text-white px-6 py-2 rounded-lg hover:from-teal-600 hover:to-emerald-700 transition-all duration-300 font-medium"
+                                className="bg-gradient-to-r cursor-pointer from-emerald-600 to-green-600 text-white px-6 py-3 rounded-full hover:from-teal-600 hover:to-emerald-700 transition-all duration-300 font-medium flex items-center justify-center group"
                             >
-                                Subscribe
+                                <span>Subscribe Now</span>
+                                <FaLeaf className="ml-2 transform group-hover:rotate-45 transition-transform" />
                             </button>
                         </form>
                     </div>
                 </div>
 
                 {/* Divider */}
+                <div className="border-t border-gray-700 relative">
+                    <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                        <FaLeaf className="text-teal-400 text-xl bg-[#0f1d1f] px-2" />
+                    </div>
+                </div>
 
-                <div className="border-t border-gray-700"></div>
                 {/* Copyright */}
-                <div className="py-6 flex flex-col md:flex-row justify-between items-center">
-                    <p className="text-gray-400 text-sm text-center mb-2 md:mb-0">
-                        © 2023 Banking Plus. All rights reserved.
+                <div className="py-6 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    <p className="text-gray-400 text-sm flex items-center">
+                        <FaLeaf className="mr-2 text-teal-400 animate-pulse" />
+                        © 2025 PlantGuard. Cultivating healthier ecosystems.
                     </p>
-                    {/* <div className="flex space-x-4">
-                        <img src="/visa.svg" alt="Visa" className="h-8 opacity-75 hover:opacity-100 transition-opacity" />
-                        <img src="/mastercard.svg" alt="Mastercard" className="h-8 opacity-75 hover:opacity-100 transition-opacity" />
-                        <img src="/amex.svg" alt="Amex" className="h-8 opacity-75 hover:opacity-100 transition-opacity" />
-                    </div> */}
+                    <div className="flex space-x-6">
+                        {[
+                            { icon: FaLinkedin, color: "#0A66C2" },
+                            { icon: FaInstagramSquare, color: "#E1306C" },
+                            { icon: FaTwitterSquare, color: "#1DA1F2" },
+                            { icon: FaFacebookSquare, color: "#1877F2" },
+                        ].map((SocialIcon, index) => (
+                            <SocialIcon.icon
+                                key={index}
+                                className="text-2xl cursor-pointer opacity-80 hover:opacity-100 transition-opacity duration-300 hover:scale-125 transform"
+                                style={{ color: SocialIcon.color }}
+                            />
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>
