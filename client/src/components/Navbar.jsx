@@ -1,7 +1,8 @@
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
-import logo from "../assets/CropSwasthya.png";
-
+// import logo from "../assets/CropSwasthya.png";
+import { GiPlantWatering } from "react-icons/gi";
+import { PiPlantLight } from "react-icons/pi";
 const navItems = [
     { to: "/", text: "Home" },
     { to: "/selectfile", text: "Search" },
@@ -38,12 +39,11 @@ const Navbar = () => {
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                 >
-                    <img
-                        src={logo}
-                        alt="CropSwasthya Logo"
-                        className="w-full h-full object-contain"
-                    />
-                    CropSwasthya
+                    <div className="flex items-center ">
+                    {/* <GiPlantWatering className="text-4xl text-emerald-400 animate-pulse" /> */}
+                    <PiPlantLight className="text-4xl text-emerald-800 " />
+                    <p className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-green-500 ml-2">PlantGuard </p>
+                    </div>
                 </motion.div>
             </NavLink>
 

@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { FaLinkedin, FaInstagramSquare, FaTwitterSquare, FaFacebookSquare, FaArrowRight, FaLeaf, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 import { GiPlantWatering } from "react-icons/gi";
+import { PiPlantLight } from "react-icons/pi";
 
 const FooterSection = () => {
     return (
@@ -27,7 +28,7 @@ const FooterSection = () => {
                     {/* Brand Identity */}
                     <div className="space-y-4">
                         <div className="flex items-center space-x-3">
-                            <GiPlantWatering className="text-4xl text-emerald-400 animate-pulse" />
+                            <PiPlantLight className="text-4xl text-emerald-400 animate-pulse" />
                             <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-green-500">
                                 PlantGuard
                             </span>
