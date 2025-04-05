@@ -1,6 +1,3 @@
-import { useState } from 'react'
-import './App.css'
-import toast from 'react-hot-toast'
 import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import SelectFile from './components/SelectFile'
@@ -9,7 +6,7 @@ import About from './pages/About'
 function App() {
 
 	return (
-		<div className='pt-[5rem] '>
+		<div className='pt-[5rem] bg-gradient-to-b from-green-50 to-white'>
 			<Navbar />
 			<Routes>
 				<Route path="/" element={<Home />} />
