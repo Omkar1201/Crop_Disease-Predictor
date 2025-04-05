@@ -189,18 +189,18 @@ const PlantReport = () => {
         setSelectedLanguage(event.target.value)
         try {
             setIsLoading(true)
+            const { isHealthy, ...filteredPlantData } = plantData;
             const response = await axios.post(
                 `${import.meta.env.VITE_BASE_URL}/translation`,
                 {
-                    plantData,
+                    plantData: filteredPlantData,
                     targetLanguage: event.target.value
                 }
             )
-            console.log(response.data.translations);
             setPlantData({
                 diseaseName: response.data?.translations.diseaseName || 'Unknown',
                 plantName: response.data?.translations.plantName || 'Unknown',
-                Flag: response.data?.translations.flag || 'Unknown',
+                isHealthy: isHealthy,
                 causes: response.data?.translations.causes || 'Unknown',
                 symptoms: response.data?.translations.symptoms || 'Unknown',
                 cure: response.data?.translations.cure || 'Unknown',
@@ -222,7 +222,7 @@ const PlantReport = () => {
             <div className="absolute -bottom-8 -left-8 w-40 h-40 bg-emerald-200/20 rounded-full blur-lg"></div>
 
             {isLoading && (
-                <div className="absolute inset-0 bg-white/80 z-30 backdrop-blur-sm flex items-center justify-center">
+                <div className="absolute inset-0 bg-white/5 z-30 backdrop-blur-sm flex items-center justify-center">
                     <div className="animate-spin rounded-full h-12 w-12 border-4 border-green-500 border-t-transparent"></div>
                 </div>
             )}
@@ -248,6 +248,15 @@ const PlantReport = () => {
                         )}
                     </div>
                 </div>
+                {plantData?.isHealthy && (
+                    <div className="flex-1">
+                        <div className="flex items-center h-full">
+                            <span className="text-4xl font-bold text-emerald-800">
+                                🌱{translations[selectedLanguage].plantHealthy}
+                            </span>
+                        </div>
+                    </div>
+                )}
 
                 {/* Language Selector */}
                 <div className="flex flex-col items-start lg:items-end gap-4">
@@ -333,9 +342,9 @@ const PlantReport = () => {
                                     data-tip="Read aloud"
                                 >
                                     <RxSpeakerLoud
-                                        className={`text-xl ${speakingIndex === index
-                                                ? 'text-green-700 animate-pulse'
-                                                : 'text-green-500'
+                                        className={`text-xl cursor-pointer ${speakingIndex === index
+                                            ? 'text-green-700 animate-pulse'
+                                            : 'text-green-500'
                                             }`}
                                     />
                                 </button>

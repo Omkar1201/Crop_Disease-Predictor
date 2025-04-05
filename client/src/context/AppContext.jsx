@@ -11,6 +11,7 @@ function AppContextProvider({ children }) {
         causes: '',
         symptoms: '',
         cure: '',
+        isHealthy: false
     })
     const translations = {
         en: {
@@ -20,7 +21,8 @@ function AppContextProvider({ children }) {
             symptoms: "Symptoms of Disease",
             cure: "Cure of Disease",
             noText: "No text found!",
-            download: "Download PDF"
+            download: "Download PDF",
+            plantHealthy: "Plant is Healthy"
         },
         mr: {
             plantName: "वनस्पतीचे नाव",
@@ -29,7 +31,8 @@ function AppContextProvider({ children }) {
             symptoms: "रोगाची लक्षणे",
             cure: "रोगाचा उपचार",
             noText: "माहिती आढळली नाही!",
-            download: "पीडीएफ डाउनलोड करा"
+            download: "पीडीएफ डाउनलोड करा",
+            plantHealthy: "वनस्पती निरोगी आहे"
         },
         hi: {
             plantName: "पौधे का नाम",
@@ -38,7 +41,8 @@ function AppContextProvider({ children }) {
             symptoms: "रोग के लक्षण",
             cure: "रोग का इलाज",
             noText: "कोई पाठ नहीं मिला!",
-            download: "पीडीएफ डाउनलोड करें"
+            download: "पीडीएफ डाउनलोड करें",
+            plantHealthy: "पौधा स्वस्थ है"
         },
         gu: {
             plantName: "વનસ્પતિનું નામ",
@@ -47,7 +51,8 @@ function AppContextProvider({ children }) {
             symptoms: "રોગના લક્ષણો",
             cure: "રોગનો ઈલાજ",
             noText: "કોઈ લખાણ મળ્યું નથી!",
-            download: "PDF ડાઉનલોડ કરો"
+            download: "PDF ડાઉનલોડ કરો",
+            plantHealthy: "વનસ્પતિ તંદુરસ્ત છે"
         },
         bn: {
             plantName: "গাছের নাম",
@@ -56,7 +61,8 @@ function AppContextProvider({ children }) {
             symptoms: "রোগের লক্ষণ",
             cure: "রোগের চিকিৎসা",
             noText: "কোনো লেখা পাওয়া যায়নি!",
-            download: "পিডিএফ ডাউনলোড করুন"
+            download: "পিডিএফ ডাউনলোড করুন",
+            plantHealthy: "গাছটি সুস্থ আছে"
         },
         ta: {
             plantName: "சரகத்தின் பெயர்",
@@ -65,7 +71,8 @@ function AppContextProvider({ children }) {
             symptoms: "நோயின் அறிகுறிகள்",
             cure: "நோயின் சிகிச்சை",
             noText: "எழுத்து காணவில்லை!",
-            download: "PDF பதிவிறக்கவும்"
+            download: "PDF பதிவிறக்கவும்",
+            plantHealthy: "செடி ஆரோக்கியமாக உள்ளது"
         },
         te: {
             plantName: "చెట్టు పేరు",
@@ -74,7 +81,8 @@ function AppContextProvider({ children }) {
             symptoms: "రోగం లక్షణాలు",
             cure: "రోగం చికిత్స",
             noText: "పాఠ్యం కనబడలేదు!",
-            download: "పిడిఎఫ్ డౌన్లోడ్ చేయండి"
+            download: "పిడిఎఫ్ డౌన్లోడ్ చేయండి",
+            plantHealthy: "చెట్టు ఆరోగ్యంగా ఉంది"
         },
         kn: {
             plantName: "ಸಸ್ಯದ ಹೆಸರು",
@@ -83,7 +91,8 @@ function AppContextProvider({ children }) {
             symptoms: "ರೋಗದ ಲಕ್ಷಣಗಳು",
             cure: "ರೋಗದ ಚಿಕಿತ್ಸೆಯು",
             noText: "ಪಠ್ಯ ದೊರಕಿಲ್ಲ!",
-            download: "ಪಿಡಿಎಫ್ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ"
+            download: "ಪಿಡಿಎಫ್ ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ",
+            plantHealthy: "ಸಸ್ಯವು ಆರೋಗ್ಯವಾಗಿದ್ದುದು"
         },
         ml: {
             plantName: "ചെടിയുടെ പേര്",
@@ -92,7 +101,8 @@ function AppContextProvider({ children }) {
             symptoms: "രോഗത്തിന്റെ ലക്ഷണങ്ങൾ",
             cure: "രോഗം ചികിത്സ",
             noText: "പാഠം ലഭ്യമല്ല!",
-            download: "PDF ഡൗൺലോഡ് ചെയ്യുക"
+            download: "PDF ഡൗൺലോഡ് ചെയ്യുക",
+            plantHealthy: "ചെടി ആരോഗ്യമാണ്"
         },
         pa: {
             plantName: "ਪੌਦੇ ਦਾ ਨਾਮ",
@@ -101,10 +111,11 @@ function AppContextProvider({ children }) {
             symptoms: "ਬਿਮਾਰੀ ਦੇ ਲੱਛਣ",
             cure: "ਬਿਮਾਰੀ ਦਾ ਇਲਾਜ",
             noText: "ਕੋਈ ਪਾਠ ਨਹੀਂ ਮਿਲਿਆ!",
-            download: "PDF ਡਾਊਨਲੋਡ ਕਰੋ"
+            download: "PDF ਡਾਊਨਲੋਡ ਕਰੋ",
+            plantHealthy: "ਪੌਦਾ ਤੰਦਰੁਸਤ ਹੈ"
         }
     };
-    
+
     const value = {
         image, setImage,
         plantData, setPlantData,

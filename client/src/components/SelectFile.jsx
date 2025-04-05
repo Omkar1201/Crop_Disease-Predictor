@@ -52,14 +52,15 @@ export default function SelectFile() {
             const fd = new FormData();
             fd.append("file_from_react", image)
             const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/predictions`, fd)
+            // console.log(response);
 
             setPlantData({
                 diseaseName: response.data?.Disease || 'Unknown',
                 plantName: response.data?.Crop || 'Unknown',
-                Flag: response.data?.flag || 'Unknown',
                 causes: response.data?.cause || 'Unknown',
                 symptoms: response.data?.sym || 'Unknown',
                 cure: response.data?.cure || 'Unknown',
+                isHealthy: response.data?.isHealthy
             })
             setTimeout(() => {
                 navigate('/plantreport')
@@ -73,7 +74,6 @@ export default function SelectFile() {
         }
 
     };
-    console.log(image);
 
     return (
 
@@ -128,7 +128,7 @@ export default function SelectFile() {
                             className='flex flex-col items-center space-y-6 px-4 text-center'
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            transition={{  duration: 0.5 }}
+                            transition={{ duration: 0.5 }}
                         >
                             <motion.div
                                 className='p-5 bg-emerald-500/10 rounded-full transition-all duration-300 group-hover:scale-110'
