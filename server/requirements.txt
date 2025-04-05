@@ -1,0 +1,12 @@
+flask
+Flask
+tensorflow==2.14.0
+pandas
+numpy<2
+matplotlib
+seaborn
+notebook
+pytest-shutil
+opencv-python
+flask_cors
+pickle4
