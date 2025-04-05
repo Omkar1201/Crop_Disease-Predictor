@@ -10,3 +10,4 @@ pytest-shutil
 opencv-python
 flask_cors
 pickle4
+gunicorn
