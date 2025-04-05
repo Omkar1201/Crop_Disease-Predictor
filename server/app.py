@@ -21,7 +21,7 @@ CORS(app)
 
 @app.route("/")
 def data():
-    return "MobileNet Model Api developed by Kartik_Dixit11"
+    return "MobileNet Model Api developed by Hustle Hulk"
 
 
 @app.route("/predictions")

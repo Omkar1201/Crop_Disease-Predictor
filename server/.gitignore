@@ -1,0 +1,4 @@
+setup.py
+/use
+/__pycache__/
+.env
