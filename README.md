@@ -59,8 +59,6 @@ The backend is built with **Flask**, a lightweight Python framework. It handles 
     python app.py
     
     
-## Working Project Video
-
-[![Watch the video](https://img.youtube.com/vi/zcfEU09WVpE/0.jpg)](https://youtu.be/zcfEU09WVpE)
-
+## Project Demo
+[![Video Thumbnail](https://img.youtube.com/vi/zcfEU09WVpE/0.jpg)](https://www.youtube.com/watch?v=zcfEU09WVpE)
 
