@@ -79,7 +79,7 @@ const HeroSection = () => {
                                     <motion.button
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
-                                        className="bg-gradient-to-r from-emerald-600 to-green-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:shadow-lg transition-all cursor-pointer"
+                                        className="bg-gradient-to-r from-emerald-600 to-green-600 text-white px-8 py-[0.6rem] rounded-xl text-lg font-semibold hover:shadow-lg transition-all cursor-pointer"
                                     >
                                         Start Diagnosis →
                                     </motion.button>
@@ -89,7 +89,7 @@ const HeroSection = () => {
                                     <motion.button
                                         whileHover={{ scale: 1.05 }}
                                         whileTap={{ scale: 0.95 }}
-                                        className="border-2 border-emerald-600 text-emerald-700 hover:bg-emerald-50 px-8 py-4 rounded-xl text-lg font-semibold transition-colors cursor-pointer"
+                                        className="border-2 border-emerald-600 text-emerald-700 hover:bg-emerald-50 px-8 py-[0.5rem] rounded-xl text-lg font-semibold transition-colors cursor-pointer"
                                     >
                                         Learn More
                                     </motion.button>

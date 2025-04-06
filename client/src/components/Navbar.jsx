@@ -1,8 +1,9 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { motion } from "framer-motion";
-// import logo from "../assets/CropSwasthya.png";
-import { GiPlantWatering } from "react-icons/gi";
+import { motion, AnimatePresence } from "framer-motion";
 import { PiPlantLight } from "react-icons/pi";
+import { FaBars, FaTimes } from "react-icons/fa";
+
 const navItems = [
     { to: "/", text: "Home" },
     { to: "/selectfile", text: "Search" },
@@ -23,7 +24,15 @@ const listItemVariants = {
     }),
 };
 
+const mobileMenuVariants = {
+    hidden: { opacity: 0, y: -20 },
+    visible: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: -20 },
+};
+
 const Navbar = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
     return (
         <motion.nav
             initial="hidden"
@@ -40,14 +49,13 @@ const Navbar = () => {
                     whileTap={{ scale: 0.95 }}
                 >
                     <div className="flex items-center ">
-                    {/* <GiPlantWatering className="text-4xl text-emerald-400 animate-pulse" /> */}
-                    <PiPlantLight className="text-4xl text-emerald-800 " />
-                    <p className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-green-500 ml-2">PlantGuard </p>
+                        <PiPlantLight className="text-4xl text-emerald-800 " />
+                        <p className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-green-500 ml-2">PlantGuard </p>
                     </div>
                 </motion.div>
             </NavLink>
 
-            {/* Navigation Links */}
+            {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-10">
                 <ul className="flex items-center space-x-10">
                     {navItems.map((link, index) => (
@@ -82,6 +90,57 @@ const Navbar = () => {
                     ))}
                 </ul>
             </div>
+
+            {/* Mobile Menu Button */}
+            <button
+                onClick={() => setIsOpen(!isOpen)}
+                className="md:hidden p-2 text-gray-600 hover:text-emerald-800 transition-colors"
+                aria-label="Toggle menu"
+            >
+                {isOpen ? (
+                    <FaTimes className="text-2xl" />
+                ) : (
+                    <FaBars className="text-2xl" />
+                )}
+            </button>
+
+            {/* Mobile Menu */}
+            <AnimatePresence>
+                {isOpen && (
+                    <motion.div
+                        variants={mobileMenuVariants}
+                        initial="hidden"
+                        animate="visible"
+                        exit="exit"
+                        transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                        className="fixed md:hidden top-16 left-0 right-0 bg-gradient-to-b from-green-100 to-green-50 backdrop-blur-md shadow-sm z-40"
+                    >
+                        <ul className="flex flex-col items-center py-4 space-y-4">
+                            {navItems.map((link, index) => (
+                                <motion.li
+                                    key={link.text}
+                                    variants={listItemVariants}
+                                    custom={index}
+                                    className="w-full text-center"
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                >
+                                    <NavLink
+                                        to={link.to}
+                                        onClick={() => setIsOpen(false)}
+                                        className={({ isActive }) =>
+                                            `block px-4 py-2 text-gray-600 hover:text-emerald-800 font-medium transition-colors duration-300 ${isActive ? "text-emerald-800" : ""
+                                            }`
+                                        }
+                                    >
+                                        {link.text}
+                                    </NavLink>
+                                </motion.li>
+                            ))}
+                        </ul>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </motion.nav>
     );
 };
