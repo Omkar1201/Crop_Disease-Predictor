@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { LuLinkedin } from "react-icons/lu";
 import { FiGithub } from "react-icons/fi";
 import { FiMail } from "react-icons/fi";
-import omkar from '../assets/Ghibli Style.png'
+import omkar from '../assets/omkar.jpg'
 import bhairavnath from '../assets/bhairavnath.jpeg'
 import digvijay from '../assets/digvijay.jpeg'
 import kartik from '../assets/kartik.jpeg'
@@ -14,15 +14,23 @@ const teamMembers = [
         image: digvijay,
         email: "digvijaykalokhe16@gmail.com",
         linkedin: "https://www.linkedin.com/in/digvijay-kalokhe-b975442ab/",
-        github: "https://github.com/",
+        github: "https://github.com/digvijay160902/",
     },
     {
         name: "Omkar Salunkhe",
         role: "Frontend Developer",
         image: omkar, 
-        email: "omkarsalunkhe3597@gmail.com",
+        email: "omkarsalunkhe1201@gmail.com",
         linkedin: "https://www.linkedin.com/in/omkar-salunkhe-28784b214",
         github: "https://github.com/omkar1201",
+    },
+    {
+        name: "Bhairavnath Bhuse",
+        role: "Backend Developer",
+        image: bhairavnath,
+        email: "bhairavnathbhuse@gmail.com",
+        linkedin: "https://www.linkedin.com/in/bhairavnath-bhuse-740266231/",
+        github: "https://github.com/Bhairavnath-Bhuse",
     },
     {
         name: "Kartik Dixit",
@@ -32,14 +40,6 @@ const teamMembers = [
         linkedin: "https://www.linkedin.com/in/kartik-prasad-dixit-6a627b225/",
         github: "https://github.com/Kartik-Dixit-11",
     }, 
-    {
-        name: "Bhairavnath Bhuse",
-        role: "Backend Developer",
-        image: bhairavnath,
-        email: "bhairavnathbhuse@gmail.com",
-        linkedin: "https://www.linkedin.com/in/bhairavnath-bhuse-740266231/",
-        github: "https://github.com/Bhairavnath-Bhuse",
-    },
     
 ];
 
@@ -61,7 +61,7 @@ export default function TeamSection() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
                     viewport={{ once: true }}
-                    className="text-4xl md:text-5xl font-bold text-center mb-20 bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-green-500"
+                    className="text-4xl md:text-5xl font-bold text-center mb-20 bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-green-400"
                 >
                     Meet Our Team
                 </motion.h2>
@@ -70,7 +70,7 @@ export default function TeamSection() {
                     {teamMembers.map((member, idx) => (
                         <motion.div
                             key={idx}
-                            className="group relative bg-white/40 backdrop-blur-lg p-8 rounded-2xl shadow-2xl border border-emerald-100 hover:shadow-3xl transition-all duration-300 ease-out hover:-translate-y-3 cursor-pointer"
+                            className="group w-[18.5rm] relative bg-white/40 backdrop-blur-lg p-8 rounded-2xl shadow-2xl border border-emerald-100 hover:shadow-3xl transition-all duration-300 ease-out hover:-translate-y-3 cursor-pointer"
                             initial={{ opacity: 0, scale: 0.95 }}
                             whileInView={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 0.5, delay: idx * 0.15, type: "spring" }}
