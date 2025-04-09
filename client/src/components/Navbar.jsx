@@ -33,16 +33,21 @@ const mobileMenuVariants = {
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
 
+    const resetScroll = () => {
+        window.scrollTo(0, 0);
+        setIsOpen(false);
+    };
+
     return (
         <motion.nav
             initial="hidden"
             animate="visible"
             variants={navbarVariants}
             transition={{ type: "spring", stiffness: 100, damping: 20 }}
-            className="w-full h-16 px-8 bg-white/95 backdrop-blur-md shadow-s fixed top-0 left-0 right-0 flex items-center justify-between z-50 bg-gradient-to-b from-green-100 to-green-50"
+            className="w-full h-16 px-8 bg-white/95 backdrop-blur-md fixed top-0 left-0 right-0 flex items-center justify-between z-50 bg-gradient-to-b from-green-100 to-green-50"
         >
             {/* Logo */}
-            <NavLink to="/">
+            <NavLink to="/" onClick={resetScroll}>
                 <motion.div
                     className="w-20 flex items-center"
                     whileHover={{ scale: 1.05 }}
@@ -50,7 +55,7 @@ const Navbar = () => {
                 >
                     <div className="flex items-center ">
                         <PiPlantLight className="text-4xl text-emerald-800 " />
-                        <p className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-green-500 ml-2">PlantGuard </p>
+                        <p className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-emerald-600 to-green-500 ml-2">PlantGuard</p>
                     </div>
                 </motion.div>
             </NavLink>
@@ -68,6 +73,7 @@ const Navbar = () => {
                         >
                             <NavLink
                                 to={link.to}
+                                onClick={resetScroll}
                                 className={({ isActive }) =>
                                     `relative px-4 py-2 text-gray-600 hover:text-emerald-800 font-medium transition-colors duration-300 ${isActive ? "text-emerald-800" : ""
                                     }`
@@ -127,7 +133,7 @@ const Navbar = () => {
                                 >
                                     <NavLink
                                         to={link.to}
-                                        onClick={() => setIsOpen(false)}
+                                        onClick={resetScroll}
                                         className={({ isActive }) =>
                                             `block px-4 py-2 text-gray-600 hover:text-emerald-800 font-medium transition-colors duration-300 ${isActive ? "text-emerald-800" : ""
                                             }`
