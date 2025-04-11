@@ -8,6 +8,7 @@ const navItems = [
     { to: "/", text: "Home" },
     { to: "/selectfile", text: "Search" },
     { to: "/about", text: "About" },
+    { to: "/team", text: "Our Team" },
 ];
 
 const navbarVariants = {
