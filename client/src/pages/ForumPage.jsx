@@ -16,6 +16,7 @@ const ForumPage = () => {
 
     // Mock data
     const categories = [
+        { id: 'all', name: 'All', icon: <TbPlant2 />, color: 'bg-amber-100' },
         { id: 'diseases', name: 'Plant Diseases', icon: <TbPlant2 />, color: 'bg-red-100' },
         { id: 'gardening', name: 'Gardening Tips', icon: <TbPlant2 />, color: 'bg-green-100' },
         { id: 'tools', name: 'Tools & Equipment', icon: <TbPlant2 />, color: 'bg-blue-100' },
