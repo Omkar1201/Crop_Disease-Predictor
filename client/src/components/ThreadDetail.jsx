@@ -5,12 +5,11 @@ import { FiArrowLeft, FiMessageSquare, FiCornerDownLeft } from 'react-icons/fi';
 import { AppContext } from '../context/AppContext';
 
 const ThreadDetail = () => {
-    const {threads, setThreads} = useContext(AppContext)
+    const { threads,getRelativeTime } = useContext(AppContext)
     const { threadId } = useParams();
     const [newReply, setNewReply] = useState('');
 
-    // This is mock data - replace with real data fetching
-    const thread = threads.find((t) => t.id === Number(threadId));
+    const thread = threads.find((th) => th._id.toString() === threadId);
 
     const handleReplySubmit = (e) => {
         e.preventDefault();
@@ -50,11 +49,11 @@ const ThreadDetail = () => {
                                 {thread.title}
                             </h1>
                             <div className="flex items-center gap-4 text-sm text-emerald-600">
-                                <span>Posted by {thread.author}</span>
+                                <span>Posted by {thread.author.userName}</span>
                                 <span>•</span>
-                                <span>{thread.timestamp}</span>
+                                <span>{getRelativeTime(thread.updatedAt)}</span>
                                 <span>•</span>
-                                <span>{thread.replies} replies</span>
+                                <span>{thread.comments.length === 1 ? 'reply' : 'replies'} </span>
                             </div>
                         </div>
                     </div>
@@ -81,9 +80,9 @@ const ThreadDetail = () => {
                         Replies ({thread.comments.length})
                     </h2>
 
-                    {thread.comments.map((comment) => (
+                    {thread.comments.map((comment, index) => (
                         <div
-                            key={comment.id}
+                            key={index}
                             className="bg-white rounded-xl shadow-sm p-6 border border-emerald-100"
                         >
                             <div className="flex items-start gap-4">
@@ -93,13 +92,13 @@ const ThreadDetail = () => {
                                 <div className="flex-1">
                                     <div className="flex items-center gap-3 mb-2">
                                         <span className="font-medium text-emerald-900">
-                                            {comment.author}
+                                            {comment.author.userName}
                                         </span>
                                         <span className="text-sm text-emerald-600">
                                             {comment.timestamp}
                                         </span>
                                     </div>
-                                    <p className="text-emerald-800">{comment.content}</p>
+                                    <p className="text-emerald-800">{comment.commentBody}</p>
                                 </div>
                             </div>
                         </div>

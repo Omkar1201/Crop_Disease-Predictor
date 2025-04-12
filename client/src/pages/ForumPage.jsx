@@ -5,9 +5,10 @@ import { FiPlus, FiSearch, FiTrendingUp } from 'react-icons/fi';
 import { TbPlant2, TbMessageCircle } from 'react-icons/tb';
 import { Dialog } from '@headlessui/react';
 import { AppContext } from '../context/AppContext';
+import axios from 'axios';
 
 const ForumPage = () => {
-    const {threads, setThreads} = useContext(AppContext)
+    const { threads, setThreads, getRelativeTime } = useContext(AppContext)
 
     const [activeCategory, setActiveCategory] = useState('all');
     const [searchQuery, setSearchQuery] = useState('');
@@ -29,25 +30,33 @@ const ForumPage = () => {
     // Filter threads based on active category and search
     const filteredThreads = threads.filter(thread => {
         const matchesCategory = activeCategory === 'all' || thread.category === activeCategory;
-        const matchesSearch = thread.title.toLowerCase().includes(searchQuery.toLowerCase()) || thread.content.toLowerCase().includes(searchQuery.toLowerCase()) ;
+        const matchesSearch = thread.title.toLowerCase().includes(searchQuery.toLowerCase()) || thread.content.toLowerCase().includes(searchQuery.toLowerCase());
         return matchesCategory && matchesSearch;
     });
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const newThread = {
-            id: threads.length + 1,
-            ...newPost,
-            author: 'Current User',
-            replies: 0,
-            views: 0,
-            timestamp: 'Just now',
-            trending: false
-        };
+        try {
 
-        setThreads([newThread, ...threads]);
-        setIsModalOpen(false);
-        setNewPost({ title: '', content: '', category: 'diseases' });
+            const responseData = await axios.post(`${import.meta.env.VITE_BASE_URL_NODE}/api/v1/createpost`,
+                { formData: newPost },
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    withCredentials: true,
+                }
+            )
+
+            const newThread = responseData.data?.responseData
+
+            setThreads([newThread, ...threads]);
+            setIsModalOpen(false);
+            setNewPost({ title: '', content: '', category: 'diseases' });
+        }
+        catch (error) {
+            console.log(error);
+        }
     };
 
     return (
@@ -122,9 +131,9 @@ const ForumPage = () => {
 
                     {/* Filtered Threads */}
                     <AnimatePresence>
-                        {filteredThreads.map((thread) => (
+                        {filteredThreads.map((thread, index) => (
                             <motion.div
-                                key={thread.id}
+                                key={index}
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0 }}
@@ -136,25 +145,25 @@ const ForumPage = () => {
                                             <TbMessageCircle className="w-6 h-6 text-emerald-600" />
                                         </div>
                                         <div>
-                                            <Link to={`/community-forum/thread/${thread.id}`} className="hover:text-emerald-600">
+                                            <Link to={`/community-forum/thread/${thread._id}`} className="hover:text-emerald-600">
                                                 {thread.title}
                                             </Link>
                                             {/* <h3 className="font-medium text-emerald-900">{thread.title}</h3> */}
                                             <div className="flex items-center gap-2 mt-2">
-                                                {thread.trending && (
+                                                {thread.comments.length >= 1 && (
                                                     <span className="flex items-center gap-1 px-2 py-1 bg-orange-100 text-orange-700 text-sm rounded-full">
                                                         <FiTrendingUp className="w-4 h-4" />
                                                         Trending
                                                     </span>
                                                 )}
-                                                <span className="text-sm text-emerald-600">{thread.author}</span>
+                                                <span className="text-sm text-emerald-600">{thread.author?.userName}</span>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div className="col-span-2 text-emerald-700">{thread.replies}</div>
+                                    <div className="col-span-2 text-emerald-700">{thread.comments.length}</div>
                                     <div className="col-span-2 text-emerald-700">{thread.views}</div>
-                                    <div className="col-span-2 text-sm text-emerald-600">{thread.timestamp}</div>
+                                    <div className="col-span-2 text-sm text-emerald-600">{getRelativeTime(thread.updatedAt)}</div>
                                 </div>
                             </motion.div>
                         ))}
