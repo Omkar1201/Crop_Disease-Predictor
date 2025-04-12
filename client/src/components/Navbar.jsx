@@ -7,6 +7,7 @@ import { FaBars, FaTimes } from "react-icons/fa";
 const navItems = [
     { to: "/", text: "Home" },
     { to: "/selectfile", text: "Search" },
+    { to: "/community-forum", text: "Community Forum" },
     { to: "/about", text: "About" },
     { to: "/contact", text: "Contact us" },
 ];
