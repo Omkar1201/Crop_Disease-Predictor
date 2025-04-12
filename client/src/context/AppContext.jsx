@@ -116,10 +116,75 @@ function AppContextProvider({ children }) {
         }
     };
 
+    const [threads, setThreads] = useState([
+        {
+            id: 1,
+            title: 'Help! Yellow spots on tomato leaves',
+            content: `I've noticed these yellow spots appearing on my tomato plant leaves over the past week. 
+              They start as small dots and gradually expand. Has anyone experienced this before? 
+              I'm using organic fertilizer and water every 2 days.`,
+            category: 'diseases',
+            author: 'UrbanGardener23',
+            replies: 15,
+            views: 245,
+            timestamp: '2h ago',
+            trending: true,
+            comments: [
+                {
+                    id: 1,
+                    author: 'PlantDoctor',
+                    content: 'This looks like early blight. Try removing affected leaves and applying copper fungicide.',
+                    timestamp: '1h ago'
+                },
+            ]
+        },
+        {
+            id: 2,
+            title: 'Why are my basil leaves curling?',
+            content: `The edges of my basil plant leaves are curling inward, and some are turning a bit yellow. 
+                          I'm watering every day and it's in partial sunlight. Could it be a nutrient issue or pests?`,
+            category: 'gardening',
+            author: 'HerbLover',
+            replies: 8,
+            views: 180,
+            timestamp: '5h ago',
+            trending: false,
+            comments: [
+                {
+                    id: 1,
+                    author: 'GreenThumb101',
+                    content: 'Sounds like it might be aphids. Check the underside of the leaves. Neem oil helps.',
+                    timestamp: '4h ago'
+                }
+            ]
+        },
+        {
+            id: 3,
+            title: 'What’s causing white powder on my cucumber leaves?',
+            content: `I’ve noticed a white powdery coating on the top of my cucumber leaves. It spreads quickly.
+                          I’m worried it could be powdery mildew. What’s the best way to deal with it organically?`,
+            category: 'diseases',
+            author: 'VeggieGrower45',
+            replies: 12,
+            views: 210,
+            timestamp: '1d ago',
+            trending: true,
+            comments: [
+                {
+                    id: 1,
+                    author: 'OrganicGuru',
+                    content: 'Definitely sounds like powdery mildew. Mix 1 part milk with 9 parts water and spray it.',
+                    timestamp: '20h ago'
+                }
+            ]
+        },
+    ]);
+    
     const value = {
         image, setImage,
         plantData, setPlantData,
-        translations
+        translations,
+        threads, setThreads
     }
 
     return <AppContext.Provider value={value}>

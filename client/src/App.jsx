@@ -8,6 +8,7 @@ import PlantReport from './components/PlantReport'
 import Contact from './pages/Contact'
 import ErrorPage from './pages/ErrorPage'
 import ForumPage from './pages/ForumPage'
+import ThreadDetail from './components/ThreadDetail'
 function App() {
 
 	return (
@@ -20,6 +21,7 @@ function App() {
 				<Route path="/plantreport" element={<PlantReport />} />
 				<Route path="/contact" element={<Contact />} />
 				<Route path="/community-forum" element={<ForumPage />} />
+				<Route path="/community-forum/thread/:threadId" element={<ThreadDetail />} />
 				<Route path="*" element={<ErrorPage />} />
 			</Routes>
 			<FooterSection />

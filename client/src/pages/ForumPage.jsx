@@ -1,10 +1,14 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useContext, useState } from 'react';
 import { FiPlus, FiSearch, FiTrendingUp } from 'react-icons/fi';
 import { TbPlant2, TbMessageCircle } from 'react-icons/tb';
 import { Dialog } from '@headlessui/react';
+import { AppContext } from '../context/AppContext';
 
 const ForumPage = () => {
+    const {threads, setThreads} = useContext(AppContext)
+
     const [activeCategory, setActiveCategory] = useState('all');
     const [searchQuery, setSearchQuery] = useState('');
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -14,31 +18,23 @@ const ForumPage = () => {
         category: 'diseases'
     });
 
-    // Mock data
+    // Categories with 'all' option
     const categories = [
-        { id: 'all', name: 'All', icon: <TbPlant2 />, color: 'bg-amber-100' },
+        { id: 'all', name: 'All Topics', icon: <TbPlant2 />, color: 'bg-emerald-100' },
         { id: 'diseases', name: 'Plant Diseases', icon: <TbPlant2 />, color: 'bg-red-100' },
         { id: 'gardening', name: 'Gardening Tips', icon: <TbPlant2 />, color: 'bg-green-100' },
         { id: 'tools', name: 'Tools & Equipment', icon: <TbPlant2 />, color: 'bg-blue-100' },
     ];
 
-    const [threads, setThreads] = useState([
-        {
-            id: 1,
-            title: 'Help! Yellow spots on tomato leaves',
-            category: 'diseases',
-            author: 'UrbanGardener23',
-            replies: 15,
-            views: 245,
-            timestamp: '2h ago',
-            trending: true
-        },
-        // Add more threads...
-    ]);
+    // Filter threads based on active category and search
+    const filteredThreads = threads.filter(thread => {
+        const matchesCategory = activeCategory === 'all' || thread.category === activeCategory;
+        const matchesSearch = thread.title.toLowerCase().includes(searchQuery.toLowerCase()) || thread.content.toLowerCase().includes(searchQuery.toLowerCase()) ;
+        return matchesCategory && matchesSearch;
+    });
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // Add your API call here
         const newThread = {
             id: threads.length + 1,
             ...newPost,
@@ -97,12 +93,12 @@ const ForumPage = () => {
                 </div>
 
                 {/* Categories */}
-                <motion.div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
+                <motion.div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-12">
                     {categories.map((category) => (
                         <motion.div
                             key={category.id}
                             whileHover={{ y: -5 }}
-                            className={`p-6 rounded-xl ${category.color} cursor-pointer transition-colors ${activeCategory === category.id ? 'ring-2 ring-emerald-500' : ''
+                            className={`p-6 rounded-xl ${category.color} cursor-pointer transition-all duration-300 ${activeCategory === category.id ? 'ring-2 ring-emerald-500 scale-[1.02]' : ''
                                 }`}
                             onClick={() => setActiveCategory(category.id)}
                         >
@@ -124,9 +120,9 @@ const ForumPage = () => {
                         <div className="col-span-2">Latest</div>
                     </div>
 
-                    {/* Threads */}
+                    {/* Filtered Threads */}
                     <AnimatePresence>
-                        {threads.map((thread) => (
+                        {filteredThreads.map((thread) => (
                             <motion.div
                                 key={thread.id}
                                 initial={{ opacity: 0, y: 10 }}
@@ -140,7 +136,10 @@ const ForumPage = () => {
                                             <TbMessageCircle className="w-6 h-6 text-emerald-600" />
                                         </div>
                                         <div>
-                                            <h3 className="font-medium text-emerald-900">{thread.title}</h3>
+                                            <Link to={`/community-forum/thread/${thread.id}`} className="hover:text-emerald-600">
+                                                {thread.title}
+                                            </Link>
+                                            {/* <h3 className="font-medium text-emerald-900">{thread.title}</h3> */}
                                             <div className="flex items-center gap-2 mt-2">
                                                 {thread.trending && (
                                                     <span className="flex items-center gap-1 px-2 py-1 bg-orange-100 text-orange-700 text-sm rounded-full">
@@ -198,7 +197,7 @@ const ForumPage = () => {
                                         value={newPost.category}
                                         onChange={(e) => setNewPost({ ...newPost, category: e.target.value })}
                                     >
-                                        {categories.map((cat) => (
+                                        {categories.slice(1).map((cat) => (
                                             <option key={cat.id} value={cat.id}>
                                                 {cat.name}
                                             </option>
