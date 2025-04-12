@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { FaLinkedin, FaInstagramSquare, FaTwitterSquare, FaFacebookSquare, FaArrowRight, FaLeaf, FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
-import { GiPlantWatering } from "react-icons/gi";
 import { PiPlantLight } from "react-icons/pi";
 
 const FooterSection = () => {

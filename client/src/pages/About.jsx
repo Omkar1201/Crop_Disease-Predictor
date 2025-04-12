@@ -2,10 +2,10 @@ import React from 'react';
 import about1 from '../assets/about1.jpg';
 import about2 from '../assets/about2.jpg';
 import { motion } from 'framer-motion';
-
+import TeamSection from '../components/TeamSection'
 const About = () => {
     return (
-        <div className=" w-full overflow-hidden  min-h-screen bg-gradient-to-b from-green-50 to-white flex flex-col">
+        <div className=" w-full overflow-hidden  min-h-screen bg-gradient-to-b from-emerald-50/80 to-green-50/50 flex flex-col">
             <main className="flex-1 container mx-auto px-4 lg:px-8 py-12">
                 {/* Hero Section */}
                 <motion.div
@@ -130,6 +130,7 @@ const About = () => {
                     </motion.div>
                 </section>
             </main>
+            <TeamSection/>
         </div>
     );
 }

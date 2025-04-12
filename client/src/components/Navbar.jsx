@@ -8,7 +8,7 @@ const navItems = [
     { to: "/", text: "Home" },
     { to: "/selectfile", text: "Search" },
     { to: "/about", text: "About" },
-    { to: "/team", text: "Our Team" },
+    { to: "/contact", text: "Contact us" },
 ];
 
 const navbarVariants = {
@@ -45,7 +45,7 @@ const Navbar = () => {
             animate="visible"
             variants={navbarVariants}
             transition={{ type: "spring", stiffness: 100, damping: 20 }}
-            className="w-full h-16 px-8 bg-white/95 backdrop-blur-md fixed top-0 left-0 right-0 flex items-center justify-between z-50 bg-gradient-to-b from-green-100 to-green-50"
+            className="w-full h-16 px-8 bg-white/10 backdrop-blur-md fixed top-0 left-0 right-0 flex items-center justify-between z-50 bg-gradient-to-b from-green-100/20 to-green-50/20"
         >
             {/* Logo */}
             <NavLink to="/" onClick={resetScroll}>

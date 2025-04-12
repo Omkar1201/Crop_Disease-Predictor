@@ -1,7 +1,6 @@
-import { useContext, useState } from "react"
-import { AppContext } from "../context/AppContext"
 import HeroSection from "../components/HeroSection"
 import InfoSection from "../components/InfoSection"
+import PlantDiseaseManual from "../components/PlantDiseaseManual "
 
 const Home = ()=>{
     
@@ -9,6 +8,7 @@ const Home = ()=>{
         <div>
             <HeroSection/>
             <InfoSection/>
+            <PlantDiseaseManual/>
         </div>
     )
 }

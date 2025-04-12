@@ -46,7 +46,7 @@ const teamMembers = [
 export default function TeamSection() {
     return (
         <section
-            className="relative bg-gradient-to-b from-emerald-50/80 to-green-50/50 py-28 px-4 sm:px-10 lg:px-20 overflow-hidden isolate"
+            className="relative pb-28 px-4 sm:px-10 lg:px-20 overflow-hidden isolate"
             id="team"
         >
 

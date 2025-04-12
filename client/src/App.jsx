@@ -5,7 +5,7 @@ import Navbar from './components/Navbar'
 import About from './pages/About'
 import FooterSection from './components/FooterSection'
 import PlantReport from './components/PlantReport'
-import TeamSection from './components/TeamSection'
+import Contact from './pages/Contact'
 function App() {
 
 	return (
@@ -15,10 +15,10 @@ function App() {
 				<Route path="/" element={<Home />} />
 				<Route path="/selectfile" element={<SelectFile />} />
 				<Route path="/about" element={<About />} />
-				<Route path="/plantreport" element={<PlantReport/>}/>
-				<Route path="/team" element={<TeamSection/>}/>
+				<Route path="/plantreport" element={<PlantReport />} />
+				<Route path="/contact" element={<Contact />} />
 			</Routes>
-			<FooterSection/>
+			<FooterSection />
 		</div>
 	)
 }
