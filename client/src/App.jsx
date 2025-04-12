@@ -6,6 +6,7 @@ import About from './pages/About'
 import FooterSection from './components/FooterSection'
 import PlantReport from './components/PlantReport'
 import Contact from './pages/Contact'
+import ErrorPage from './pages/ErrorPage'
 function App() {
 
 	return (
@@ -17,6 +18,7 @@ function App() {
 				<Route path="/about" element={<About />} />
 				<Route path="/plantreport" element={<PlantReport />} />
 				<Route path="/contact" element={<Contact />} />
+				<Route path="*" element={<ErrorPage />} />
 			</Routes>
 			<FooterSection />
 		</div>
