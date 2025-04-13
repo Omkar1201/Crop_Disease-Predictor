@@ -5,11 +5,46 @@ import { FiArrowLeft, FiMessageSquare, FiCornerDownLeft } from 'react-icons/fi';
 import { AppContext } from '../context/AppContext';
 
 const ThreadDetail = () => {
-    const { threads,getRelativeTime } = useContext(AppContext)
+    const { threads, getRelativeTime } = useContext(AppContext);
     const { threadId } = useParams();
     const [newReply, setNewReply] = useState('');
 
     const thread = threads.find((th) => th._id.toString() === threadId);
+
+    // Handle case where thread is not found
+    if (!thread) {
+        return (
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="min-h-screen bg-gradient-to-b from-emerald-50 to-white flex items-center justify-center"
+            >
+                <div className="max-w-2xl text-center px-4">
+                    <motion.div
+                        initial={{ scale: 0.5 }}
+                        animate={{ scale: 1 }}
+                        className="mb-8 text-9xl text-emerald-600"
+                    >
+                        🌱
+                    </motion.div>
+                    <h1 className="text-4xl font-bold text-emerald-900 mb-4">
+                        Thread Not Found
+                    </h1>
+                    <p className="text-lg text-emerald-700 mb-8">
+                        The discussion you're looking for has either been removed or never existed.
+                        Let's get you back to the community garden!
+                    </p>
+                    <Link
+                        to="/community-forum"
+                        className="inline-flex items-center gap-2 px-8 py-3 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 transition-colors text-lg"
+                    >
+                        <FiArrowLeft className="w-5 h-5" />
+                        Return to Forum
+                    </Link>
+                </div>
+            </motion.div>
+        );
+    }
 
     const handleReplySubmit = (e) => {
         e.preventDefault();
