@@ -6,6 +6,7 @@ import { TbPlant2, TbMessageCircle } from 'react-icons/tb';
 import { Dialog } from '@headlessui/react';
 import { AppContext } from '../context/AppContext';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const ForumPage = () => {
     const { threads, setThreads, getRelativeTime } = useContext(AppContext)
@@ -53,9 +54,11 @@ const ForumPage = () => {
             setThreads([newThread, ...threads]);
             setIsModalOpen(false);
             setNewPost({ title: '', content: '', category: 'diseases' });
+            toast.success(responseData.data?.message)
         }
         catch (error) {
             console.log(error);
+            toast.error(error.response?.data.message)
         }
     };
 
@@ -94,7 +97,7 @@ const ForumPage = () => {
                     </div>
                     <button
                         onClick={() => setIsModalOpen(true)}
-                        className="flex items-center gap-2 px-6 py-3 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 transition-colors"
+                        className="flex items-center gap-2 px-6 py-3 bg-emerald-600 text-white rounded-xl hover:bg-emerald-700 transition-colors cursor-pointer"
                     >
                         <FiPlus className="w-5 h-5" />
                         New Discussion
@@ -163,7 +166,7 @@ const ForumPage = () => {
 
                                     <div className="col-span-2 text-emerald-700">{thread.comments.length}</div>
                                     <div className="col-span-2 text-emerald-700">{thread.views}</div>
-                                    <div className="col-span-2 text-sm text-emerald-600">{getRelativeTime(thread.updatedAt)}</div>
+                                    <div className="col-span-2 text-sm text-emerald-600">{getRelativeTime(thread.createdAt)}</div>
                                 </div>
                             </motion.div>
                         ))}
@@ -231,13 +234,13 @@ const ForumPage = () => {
                                     <button
                                         type="button"
                                         onClick={() => setIsModalOpen(false)}
-                                        className="px-6 py-2 text-emerald-700 hover:bg-emerald-50 rounded-lg transition-colors"
+                                        className="px-6 py-2 text-emerald-700 hover:bg-emerald-50 rounded-lg transition-colors cursor-pointer"
                                     >
                                         Cancel
                                     </button>
                                     <button
                                         type="submit"
-                                        className="px-6 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors"
+                                        className="px-6 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors cursor-pointer"
                                     >
                                         Create Post
                                     </button>

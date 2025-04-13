@@ -202,6 +202,14 @@ function AppContextProvider({ children }) {
 
     const [threads, setThreads] = useState([]);
     
+    const updateThread = (threadId, updatedThread) => {
+        setThreads(prevThreads => 
+            prevThreads.map(thread => 
+                thread._id === threadId ? updatedThread : thread
+            )
+        );
+    };
+
     useEffect(() => {
         const fetchThreads = async () => {
             try {
@@ -212,13 +220,12 @@ function AppContextProvider({ children }) {
                         },
                     }
                 )
-                // console.log(responseData.data?.allPosts);
                 setThreads(responseData.data?.allPosts)
             }
             catch (error) {
                 console.log(error);
+                toast.error(error.response?.data.message)
             }
-
         }
         fetchThreads()
     }, [])
@@ -228,7 +235,8 @@ function AppContextProvider({ children }) {
         plantData, setPlantData,
         translations,
         threads, setThreads,
-        getRelativeTime
+        getRelativeTime,
+        updateThread
     }
 
     return <AppContext.Provider value={value}>

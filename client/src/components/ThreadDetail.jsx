@@ -3,9 +3,11 @@ import { motion } from 'framer-motion';
 import { useParams, Link } from 'react-router-dom';
 import { FiArrowLeft, FiMessageSquare, FiCornerDownLeft } from 'react-icons/fi';
 import { AppContext } from '../context/AppContext';
+import axios from 'axios';
+import toast from 'react-hot-toast';
 
 const ThreadDetail = () => {
-    const { threads, getRelativeTime } = useContext(AppContext);
+    const { threads, getRelativeTime,updateThread } = useContext(AppContext);
     const { threadId } = useParams();
     const [newReply, setNewReply] = useState('');
 
@@ -46,11 +48,29 @@ const ThreadDetail = () => {
         );
     }
 
-    const handleReplySubmit = (e) => {
+    const handleReplySubmit = async (e) => {
         e.preventDefault();
+        try {
+            const responseData = await axios.post(`${import.meta.env.VITE_BASE_URL_NODE}/api/v1/createcomment/${thread?._id}`,
+                { commentBody: newReply },
+                {
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    withCredentials: true,
+                }
+            )
+            toast.success("Comment Done")
+            const updatedThread = responseData.data?.updatedPostData;
+            updateThread(updatedThread._id,updatedThread)
+            setNewReply('');
+        }
+        catch(error){
+            toast.error(error.response?.data.message)
+            console.log(error);   
+        }
         // Add your reply submission logic here
-        console.log('New reply:', newReply);
-        setNewReply('');
+        // console.log('New reply:', newReply);
     };
 
     return (
@@ -86,9 +106,9 @@ const ThreadDetail = () => {
                             <div className="flex items-center gap-4 text-sm text-emerald-600">
                                 <span>Posted by {thread.author.userName}</span>
                                 <span>•</span>
-                                <span>{getRelativeTime(thread.updatedAt)}</span>
+                                <span>{getRelativeTime(thread.createdAt)}</span>
                                 <span>•</span>
-                                <span>{thread.comments.length === 1 ? 'reply' : 'replies'} </span>
+                                <span>{thread?.comments?.length} {thread?.comments?.length === 1 ? 'reply' : 'replies'} </span>
                             </div>
                         </div>
                     </div>
@@ -157,7 +177,7 @@ const ThreadDetail = () => {
                     />
                     <button
                         type="submit"
-                        className="flex items-center gap-2 px-6 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700"
+                        className="flex items-center gap-2 px-6 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 cursor-pointer"
                     >
                         <FiCornerDownLeft className="w-5 h-5" />
                         Post Reply
