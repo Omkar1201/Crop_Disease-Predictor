@@ -10,6 +10,8 @@ import ErrorPage from './pages/ErrorPage'
 import ForumPage from './pages/ForumPage'
 import ThreadDetail from './components/ThreadDetail'
 import Signin from './components/Signin'
+import DiseaseLibrary from './components/DiseaseLibrary'
+import DiseaseDetails from './components/DiseaseDetails'
 function App() {
 
 	return (
@@ -24,6 +26,8 @@ function App() {
 				<Route path="/community-forum" element={<ForumPage />} />
 				<Route path="/community-forum/thread/:threadId" element={<ThreadDetail />} />
 				<Route path="/signin" element={<Signin />} />
+				<Route path="/disease-library" element={<DiseaseLibrary />} />
+				<Route path="/disease-library/disease/:diseaseId" element={<DiseaseDetails />} />
 				<Route path="*" element={<ErrorPage />} />
 			</Routes>
 			<FooterSection />

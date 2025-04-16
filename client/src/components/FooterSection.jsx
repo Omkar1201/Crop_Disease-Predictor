@@ -50,18 +50,18 @@ const FooterSection = () => {
                                 About Us
                             </NavLink>
                             <NavLink
-                                // to="/disease-library"
+                                to="/disease-library"
                                 className="text-gray-300 hover:text-white flex items-center group transition-all duration-300 hover:pl-2"
                             >
                                 <FaArrowRight className="mr-2 text-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                                 Disease Library
                             </NavLink>
                             <NavLink
-                                // to="/privacy"
+                                to="/contact"
                                 className="text-gray-300 hover:text-white flex items-center group transition-all duration-300 hover:pl-2"
                             >
                                 <FaArrowRight className="mr-2 text-emerald-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                                Privacy Policy
+                                Contact us
                             </NavLink>
                         </div>
                     </div>

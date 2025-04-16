@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 
 export const AppContext = createContext();
@@ -117,7 +118,7 @@ function AppContextProvider({ children }) {
         }
     };
 
-    
+
     const getRelativeTime = (updatedAt) => {
         const updated = new Date(updatedAt);
         const now = new Date();
@@ -157,7 +158,7 @@ function AppContextProvider({ children }) {
     //         ]
     //     },
     //     {
-            
+
     //         _id: 2,
     //         title: 'Why are my basil leaves curling?',
     //         content: `The edges of my basil plant leaves are curling inward, and some are turning a bit yellow. 
@@ -197,14 +198,15 @@ function AppContextProvider({ children }) {
     //             }
     //         ]
     //     },
-    
+
     // ]);
 
     const [threads, setThreads] = useState([]);
-    
+    const [diseaseInfo,setDiseaseInfo] = useState([]);
+
     const updateThread = (threadId, updatedThread) => {
-        setThreads(prevThreads => 
-            prevThreads.map(thread => 
+        setThreads(prevThreads =>
+            prevThreads.map(thread =>
                 thread._id === threadId ? updatedThread : thread
             )
         );
@@ -227,16 +229,38 @@ function AppContextProvider({ children }) {
                 toast.error(error.response?.data.message)
             }
         }
+
+        const fetchDiseaseInfo = async () => {
+            try{
+                const responseData = await axios.get(
+                    `${import.meta.env.VITE_BASE_URL_NODE}/api/v1/disease/getalldiseases`,
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    }
+                );
+                setDiseaseInfo(responseData.data?.responseData);
+            }
+            catch(error)
+            {
+                console.log(error);
+                toast.error(error.response?.data.message)                
+            }
+        }
+
         fetchThreads()
+        fetchDiseaseInfo()
     }, [])
-    
+
     const value = {
         image, setImage,
         plantData, setPlantData,
         translations,
         threads, setThreads,
         getRelativeTime,
-        updateThread
+        updateThread,
+        diseaseInfo,setDiseaseInfo
     }
 
     return <AppContext.Provider value={value}>

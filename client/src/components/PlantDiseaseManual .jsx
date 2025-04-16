@@ -54,7 +54,7 @@ const UserManual = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
-            className="min-h-screen bg-gradient-to-b from-emerald-50 via-green-50 to-green-50/50 py-20 px-4"
+            className="min-h-screen bg-gradient-to-b from-emerald-50/10 via-green-50 to-green-50 py-20 px-4"
         >
             <div className="max-w-6xl mx-auto relative overflow-hidden">
                 {/* Floating decorative elements */}
