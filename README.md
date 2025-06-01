@@ -60,5 +60,5 @@ The backend is built with **Flask**, a lightweight Python framework. It handles 
     
     
 ## Project Demo
-[![Video Thumbnail](https://img.youtube.com/vi/vbGXBciTOmI3Dvof/0.jpg)](https://www.youtube.com/watch?v=vbGXBciTOmI3Dvof)
+[![Video Thumbnail](https://img.youtube.com/vi/vbGXBciTOmI3Dvof/0.jpg)](https://youtu.be/pNP7ZUu08t0)
 
