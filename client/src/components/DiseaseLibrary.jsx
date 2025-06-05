@@ -3,48 +3,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../context/AppContext';
 
-// export const diseases = [
-//     // Keep your existing disease data
-//     {
-//         id: 1,
-//         name: 'Powdery Mildew',
-//         plant: 'Roses',
-//         causes: ['Fungal growth', 'High humidity', 'Poor air circulation'],
-//         symptoms: ['White powdery spots', 'Yellowing leaves', 'Stunted growth'],
-//         prevention: ['Improve air flow', 'Apply fungicide', 'Remove infected plants'],
-//         images: [
-//             "https://loremflickr.com/600/400/dog",
-//             "https://via.placeholder.com/600x400.png/33FF57/FFFFFF?text=Leaf+Blight+2",
-//             "https://via.placeholder.com/600x400.png/3357FF/FFFFFF?text=Leaf+Blight+3"
-//         ]
-//     },
-//     {
-//         id: 2,
-//         name: 'Early Blight',
-//         plant: 'Tomatoes',
-//         causes: ['Fungal infection', 'Warm humid weather', 'Poor soil drainage'],
-//         symptoms: ['Dark concentric spots', 'Yellow halos', 'Leaf drop'],
-//         prevention: ['Rotate crops', 'Apply copper fungicide', 'Remove infected leaves'],
-//         images: [
-//             'https://cdn.pixabay.com/photo/2016/08/25/16/24/tomato-1619975_1280.jpg',
-//             'https://cdn.pixabay.com/photo/2020/06/18/06/28/tomato-5312435_1280.jpg',
-//             'https://cdn.pixabay.com/photo/2016/09/06/11/34/tomato-1648955_1280.jpg'
-//         ]
-//     },
-//     {
-//         id: 3,
-//         name: 'Late Blight',
-//         plant: 'Potatoes',
-//         causes: ['Phytophthora infestans', 'Cool wet weather', 'Poor air circulation'],
-//         symptoms: ['Dark leaf lesions', 'White mold growth', 'Rapid plant collapse'],
-//         prevention: ['Use resistant varieties', 'Apply fungicides', 'Destroy infected plants'],
-//         images: [
-//             'https://cdn.pixabay.com/photo/2018/09/23/18/30/potato-3698070_1280.jpg',
-//             'https://cdn.pixabay.com/photo/2016/10/09/20/12/potato-1726654_1280.jpg',
-//             'https://cdn.pixabay.com/photo/2018/05/08/20/21/potatoes-3384013_1280.jpg'
-//         ]
-//     }
-// ];
 
 const DiseaseLibrary = () => {
     const navigate = useNavigate();
@@ -158,7 +116,7 @@ const DiseaseLibrary = () => {
                     )}
                 </motion.div>
 
-                {/* Disease Cards Grid */}
+                {/* Disease Cards */}
                 <motion.div
                     layout
                     className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"

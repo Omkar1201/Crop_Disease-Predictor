@@ -6,7 +6,6 @@ import { PiPlantLight } from "react-icons/pi";
 const FooterSection = () => {
     return (
         <div className="w-full bg-gradient-to-br from-[#1a2e28] to-[#0f1d1f] pt-12 relative overflow-hidden">
-            {/* Decorative leaf pattern */}
             <div className="absolute inset-0 opacity-10 z-0">
                 {[...Array(20)].map((_, i) => (
                     <FaLeaf

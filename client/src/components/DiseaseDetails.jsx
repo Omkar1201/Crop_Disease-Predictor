@@ -55,7 +55,7 @@ const ImageCarousel = ({ images }) => {
                 </button>
             </div>
 
-            {/* Dots Indicator */}
+            {/* Dots */}
             <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1">
                 {images.map((_, index) => (
                     <div

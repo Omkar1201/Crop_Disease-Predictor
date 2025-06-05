@@ -1,7 +1,5 @@
 import axios from "axios";
 import { createContext, useEffect, useState } from "react";
-import toast from "react-hot-toast";
-
 
 export const AppContext = createContext();
 
@@ -226,7 +224,6 @@ function AppContextProvider({ children }) {
             }
             catch (error) {
                 console.log(error);
-                toast.error(error.response?.data.message)
             }
         }
 
@@ -245,7 +242,6 @@ function AppContextProvider({ children }) {
             catch(error)
             {
                 console.log(error);
-                toast.error(error.response?.data.message)                
             }
         }
 

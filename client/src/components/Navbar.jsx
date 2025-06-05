@@ -16,7 +16,7 @@ const navItems = [
     { to: "/community-forum", text: "Community Forum" },
     { to: "/disease-library", text: "Disease Library" },
     { to: "/about", text: "About" },
-    { to: "/contact", text: "Contact us" },
+    // { to: "/signin", text: "Signin" },
 ];
 
 const navbarVariants = {

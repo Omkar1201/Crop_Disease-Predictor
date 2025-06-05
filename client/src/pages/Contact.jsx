@@ -198,7 +198,7 @@ const Contact = () => {
                         <div className="text-center space-y-3 relative z-10">
                             <motion.h2
                                 variants={itemVariants}
-                                className="text-4xl font-bold bg-gradient-to-r from-emerald-700 to-green-600 bg-clip-text text-transparent"
+                                className="text-4xl font-bold bg-gradient-to-r from-emerald-700 to-green-600 bg-clip-text text-transparent py-1"
                             >
                                 Have Questions or Suggestions?
                             </motion.h2>

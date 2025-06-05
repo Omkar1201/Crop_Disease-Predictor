@@ -153,7 +153,7 @@ const ForumPage = () => {
                                             </Link>
                                             {/* <h3 className="font-medium text-emerald-900">{thread.title}</h3> */}
                                             <div className="flex items-center gap-2 mt-2">
-                                                {thread.comments.length >= 1 && (
+                                                {thread.views >= 10 && (
                                                     <span className="flex items-center gap-1 px-2 py-1 bg-orange-100 text-orange-700 text-sm rounded-full">
                                                         <FiTrendingUp className="w-4 h-4" />
                                                         Trending

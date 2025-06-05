@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { useParams, Link } from 'react-router-dom';
 import { FiArrowLeft, FiMessageSquare, FiCornerDownLeft } from 'react-icons/fi';
@@ -13,6 +13,24 @@ const ThreadDetail = () => {
 
     const thread = threads.find((th) => th._id.toString() === threadId);
 
+    useEffect(() => {
+        const viewThread = async () => {
+            try {
+                const responseData = await axios.post(
+                    `${import.meta.env.VITE_BASE_URL_NODE}/api/v1/postviewed/${threadId}`,
+                    {
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                    }
+                )
+            }
+            catch (error) {
+                console.log(error)
+            }
+        }
+        viewThread()
+    }, [])
     // Handle case where thread is not found
     if (!thread) {
         return (
@@ -62,15 +80,13 @@ const ThreadDetail = () => {
             )
             toast.success("Comment Done")
             const updatedThread = responseData.data?.updatedPostData;
-            updateThread(updatedThread._id,updatedThread)
+            updateThread(updatedThread._id, updatedThread)
             setNewReply('');
         }
-        catch(error){
+        catch (error) {
             toast.error(error.response?.data.message)
-            console.log(error);   
+            console.log(error);
         }
-        // Add your reply submission logic here
-        // console.log('New reply:', newReply);
     };
 
     return (
