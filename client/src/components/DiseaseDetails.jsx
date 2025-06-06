@@ -5,6 +5,7 @@ import { FaExclamationTriangle, FaStethoscope, FaShieldAlt } from 'react-icons/f
 import { FiArrowLeft } from 'react-icons/fi';
 import { AppContext } from '../context/AppContext';
 
+// Updated ImageCarousel component
 const ImageCarousel = ({ images }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -17,15 +18,18 @@ const ImageCarousel = ({ images }) => {
     };
 
     return (
-        <div className="relative h-80 overflow-hidden group">
-            <div className="absolute inset-0 flex">
+        <div className="relative h-100 overflow-hidden group bg-gradient-to-b from-green-100 to-white">
+            <div className=" flex items-center justify-center">
                 {images.map((img, index) => (
                     <motion.img
                         key={index}
                         src={img}
                         alt="Disease example"
-                        className="w-full h-full object-cover"
-                        initial={{ opacity: 0 }}
+                        className="max-w-full max-h-full object-contain"
+                        initial={{ 
+                            opacity: 0, 
+                            x: `${(index - currentIndex) * 100}%` 
+                        }}
                         animate={{
                             opacity: index === currentIndex ? 1 : 0,
                             x: `${(index - currentIndex) * 100}%`
@@ -60,7 +64,7 @@ const ImageCarousel = ({ images }) => {
                 {images.map((_, index) => (
                     <div
                         key={index}
-                        className={`w-2 h-2 rounded-full transition-colors ${index === currentIndex ? 'bg-white' : 'bg-white/50'}`}
+                        className={`w-2 h-2 rounded-full transition-colors ${index === currentIndex ? 'bg-emerald-600' : 'bg-gray-300'}`}
                     />
                 ))}
             </div>
@@ -161,7 +165,7 @@ const DiseaseDetails = () => {
                     className="bg-white rounded-2xl shadow-lg overflow-hidden"
                 >
                     {disease?.images && (
-                        <div className="relative">
+                        <div className="relative ">
                             <ImageCarousel images={disease?.images} />
                             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-green-200 to-white p-6">
                                 <div className="flex items-center gap-3 mb-2">

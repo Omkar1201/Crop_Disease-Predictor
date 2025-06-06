@@ -4,8 +4,8 @@ import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 
 const Signup = () => {
-    const [userData, setUserData] = useState({ fullName: "", username: "", email: "", password: "", confirmPassword: "" });
-    const [isFocused, setIsFocused] = useState({ fullName: false, username: false, email: false, password: false, confirmPassword: false })
+    const [userData, setUserData] = useState({ fullName: "", username: "", password: "", confirmPassword: "" });
+    const [isFocused, setIsFocused] = useState({ fullName: false, username: false, password: false, confirmPassword: false })
     const [isLoading, setIsLoading] = useState(false)
 
     const navigate = useNavigate()
@@ -41,7 +41,7 @@ const Signup = () => {
         try {
             const responseData = await axios.post(
                 `${import.meta.env.VITE_BASE_URL_NODE}/api/v1/signup`,
-                { fullName: userData.fullName, userName: userData.username, email: userData.email, password: userData.password },
+                { fullName: userData.fullName, userName: userData.username, password: userData.password },
                 {
                     headers: {
                         'Content-Type': 'application/json',
@@ -103,22 +103,6 @@ const Signup = () => {
                             </label>
                         </div>
                         <div className="relative ">
-                            <input type="email" name="email" required
-                                value={userData.email}
-                                onChange={handleChange}
-                                onFocus={handleFocuse}
-                                onBlur={handleBlur}
-                                className="w-full transition duration-[0.2s] px-3 py-2.5 text-base outline-none hover:border-emerald-300 border-2 border-gray-300 rounded-md focus:border-emerald-500"
-                            />
-                            <label
-                                className={`absolute left-3 pointer-events-none transition-all duration-300 
-                            ${userData.email ? "-top-2 left-2 text-xs bg-white px-2" : "top-[0.55rem]"} 
-                            ${isFocused.email ? "text-emerald-500" : "text-gray-500"} `}
-                            >
-                                Email
-                            </label>
-                        </div>
-                        <div className="relative ">
                             <input type="password" name="password" required
                                 value={userData.password}
                                 onChange={handleChange}
@@ -148,7 +132,7 @@ const Signup = () => {
                             ${userData.confirmPassword ? "-top-2 left-2 text-xs bg-white px-2" : "top-[0.55rem]"} 
                             ${isFocused.confirmPassword ? "text-emerald-500" : "text-gray-500"} `}
                             >
-                                ConfirmPassword
+                                Confirm Password
                             </label>
                         </div>
                         <div className="relative">

@@ -51,7 +51,7 @@ def prediction():
                     else:
                         return jsonify({"Crop":data[0].capitalize(),"Disease":"N/A","cause":"N/A","sym":"N/A","cure":"N/A","isHealthy":True})
             except Exception as e:
-                  return jsonify({"Crop":"error","Disease":"error"})
+                return jsonify({"Crop":"error","Disease":"error"})
              
 
 load_dotenv()
