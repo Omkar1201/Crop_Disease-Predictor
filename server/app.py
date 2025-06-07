@@ -51,6 +51,7 @@ def prediction():
                     else:
                         return jsonify({"Crop":data[0].capitalize(),"Disease":"N/A","cause":"N/A","sym":"N/A","cure":"N/A","isHealthy":True})
             except Exception as e:
+                print("Prediction Error:", str(e))
                 return jsonify({"Crop":"error","Disease":"error"})
              
 
